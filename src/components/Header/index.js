@@ -83,11 +83,13 @@ class Header extends Component {
      */}
 
         <div className="nav-container-desktop">
-          <img
-            src="https://res.cloudinary.com/drytxchra/image/upload/v1661775720/COVID19INDIA_xvsyku.png"
-            className="logo"
-            alt="logo"
-          />
+          <Link to="/">
+            <img
+              src="https://res.cloudinary.com/drytxchra/image/upload/v1661775720/COVID19INDIA_xvsyku.png"
+              className="logo"
+              alt="logo"
+            />
+          </Link>
           <ul className="list-container">
             <Link to="/" className="item">
               <button type="button" className={`${classOfTabHome}`}>

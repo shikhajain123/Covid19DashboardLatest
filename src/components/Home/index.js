@@ -319,6 +319,26 @@ class Home extends Component {
     })
   }
 
+  onClickAscOrder = () => {
+    const {statesInfo} = this.state
+    const sortedList = statesInfo.sort((a, b) => {
+      const x = a.stateName.toUpperCase()
+      const y = b.stateName.toUpperCase()
+      return x > y ? 1 : -1
+    })
+    this.setState({statesInfo: sortedList})
+  }
+
+  onClickDescOrder = () => {
+    const {statesInfo} = this.state
+    const sortedList = statesInfo.sort((a, b) => {
+      const x = a.stateName.toUpperCase()
+      const y = b.stateName.toUpperCase()
+      return x < y ? 1 : -1
+    })
+    this.setState({statesInfo: sortedList})
+  }
+
   renderAllStatesList = () => {
     const {statesInfo} = this.state
 
@@ -376,11 +396,16 @@ class Home extends Component {
 
     return (
       <ul
+        className="search-result-container"
         testid="searchResultsUnorderedList"
-        className="search-result-unordered-container"
       >
         {filteredSearchList.map(each => (
-          <SearchResult key={each.state_code} stateDetails={each} />
+          <SearchResult
+            key={each.state_code}
+            statename={each.state_name}
+            statecode={each.state_code}
+            id={each.state_code}
+          />
         ))}
       </ul>
     )
