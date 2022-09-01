@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 100vw;
   background-size: cover;
   background-color: #161625;
 }
@@ -10,12 +11,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   width: 95%;
-  max-width: 540px;
-  margin-top: 50px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 601px) {
   .responsive-container {
     min-width: 1140px;
   }
@@ -27,18 +27,14 @@
   border-radius: 8px;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 20px;
   width: 90%;
-  max-width: 540px;
-  height: 50px;
+  height: 60px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 601px) {
   .search-btn-container {
-    margin-left: 320px;
-    padding-left: 40px;
-    width: 90%;
-    max-width: 700px;
+    margin: 32px 0px;
+    width: 57.22%;
   }
 }
 
@@ -137,4 +133,80 @@
 }
 .gray {
   color: #6c757d;
+}
+
+.search-result-unordered-container {
+  list-style-type: none;
+  width: 57.22%;
+
+  margin-bottom: 64px;
+}
+
+.state-table-container {
+  width: 80%;
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.all-states-table {
+  width: 100%;
+  background: #1e1e30;
+  border: 1px solid #475569;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+  border-radius: 12px;
+  align-self: flex-start;
+  background-size: cover;
+}
+
+@media screen and (max-width: 600px) {
+  .all-states-table {
+    width: 800px;
+    overflow-x: auto;
+  }
+}
+
+.table-header {
+  border-bottom: 1px solid #475569;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 72px;
+}
+
+.state-heading-asc-desc-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 22%;
+  padding: 0px 32px;
+  align-items: center;
+}
+
+.state-ut-heading {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #f8fafc;
+}
+
+.ascOrder {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  font-size: 20px;
+}
+
+.order-icon {
+  color: #94a3b8;
+}
+
+.other-tables-bar {
+  width: 15.6%;
 }

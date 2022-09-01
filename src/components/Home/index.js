@@ -226,8 +226,8 @@ class Home extends Component {
         totalConfirmedCases: countryWideConfirmedCases,
         totalRecoveredCases: countryWideRecoveredCases,
         totalDeceasedCases: countryWideDeceasedCases,
-        isLoading: false,
         statesInfo: states,
+        isLoading: false,
       })
     }
   }
@@ -285,33 +285,101 @@ class Home extends Component {
             alt="country wide recovered cases pic"
           />
 
-          <p className="stats-number green">{totalActiveCases}</p>
+          <p className="stats-number green">{totalRecoveredCases}</p>
         </div>
         <div
           className="state-block-column-container"
           testid="countryWideRecoveredCases"
         >
-          <p className="stats-title grey">Deceased</p>
+          <p className="stats-title gray">Deceased</p>
           <img
             src="https://res.cloudinary.com/drytxchra/image/upload/v1661774684/breathing_1_bu3czh.png"
             className="stats-icon"
             alt="country wide deceased cases pic"
           />
 
-          <p className="stats-number grey">{totalActiveCases}</p>
+          <p className="stats-number gray">{totalDeceasedCases}</p>
         </div>
       </>
     )
   }
 
-  onSubmitSearchInput = () => {
-    this.getStateWiseList()
+  onSubmitSearchInput = event => {
+    this.setState({searchInput: event.target.value})
   }
 
-  onEnterSearchInput = event => {
-    if (event.key === 'Enter') {
-      this.getStateWiseList()
-    }
+  searchStarted = event => {
+    const searchItem = event.target.value
+    const searchResult = statesList.filter(each =>
+      each.state_name.toLowerCase().includes(searchItem.toLowerCase()),
+    )
+    return this.setState({
+      filteredSearchList: searchResult,
+      searchInput: event.target.value,
+    })
+  }
+
+  renderAllStatesList = () => {
+    const {statesInfo} = this.state
+
+    return (
+      <div className="all-states-table" testid="stateWiseCovidDataTable">
+        <div className="table-header">
+          <div className="state-heading-asc-desc-container">
+            <p className="state-ut-heading">States/UT</p>
+            <button
+              testid="ascendingSort"
+              className="ascOrder"
+              onClick={this.onClickAscOrder}
+            >
+              <FcGenericSortingAsc className="order-icon" />
+            </button>
+            <button
+              testid="descendingSort"
+              className="ascOrder"
+              onClick={this.onClickDescOrder}
+            >
+              <FcGenericSortingDesc className="order-icon" />
+            </button>
+          </div>
+          <div className="other-tables-bar">
+            <p className="state-ut-heading">Confirmed</p>
+          </div>
+          <div className="other-tables-bar">
+            <p className="state-ut-heading">Active</p>
+          </div>
+          <div className="other-tables-bar">
+            <p className="state-ut-heading">Recovered</p>
+          </div>
+          <div className="other-tables-bar">
+            <p className="state-ut-heading">Deceased</p>
+          </div>
+          <div className="other-tables-bar">
+            <p className="state-ut-heading">Population</p>
+          </div>
+        </div>
+        <div className></div>
+      </div>
+    )
+  }
+
+  showSearchList = () => {
+    const {filteredSearchList} = this.state
+
+    return (
+      <ul
+        testid="searchResultsUnorderedList"
+        className="search-result-unordered-container"
+      >
+        {filteredSearchList.map(each => (
+          <SearchResult key={each.state_code} stateDetails={each} />
+        ))}
+      </ul>
+    )
+  }
+
+  removeFilteredList = () => {
+    this.setState({filteredSearchList: []})
   }
 
   render() {
@@ -331,27 +399,27 @@ class Home extends Component {
                 className="search-button"
                 onClick={this.onSubmitSearchInput}
               >
-                <BsSearch className="search-icon" />
+                <BsSearch className="search-icon" testid="searchIcon" />
               </button>
 
               <input
                 className="search-input"
                 type="search"
                 placeholder="Enter the State"
-                onChange={this.onGetSearchInput}
-                onKeyDown={this.onEnterSearchInput}
+                onChange={this.searchStarted}
+                onAbort={this.removeFilteredList}
               />
             </div>
             {searchInput.length > 0 ? showSearchList : ''}
             {isLoading ? (
-              this.renderLoader
+              this.renderLoader()
             ) : (
               <>
                 <div className="country-stats-container">
-                  {this.renderEntireNationData}
+                  {this.renderEntireNationData()}
                 </div>
                 <div className="state-table-container">
-                  {/* this.renderAllStatesList */}
+                  {this.renderAllStatesList()}
                 </div>
               </>
             )}
