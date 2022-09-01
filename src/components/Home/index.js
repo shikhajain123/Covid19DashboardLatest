@@ -218,7 +218,7 @@ class Home extends Component {
           .map(e => data[e].total.other),
         population: Object.keys(data)
           .filter(state => state === each.state_code)
-          .map(e => data[e].total.population),
+          .map(e => data[e].meta.population),
       }))
 
       this.setState({
@@ -328,6 +328,7 @@ class Home extends Component {
           <div className="state-heading-asc-desc-container">
             <p className="state-ut-heading">States/UT</p>
             <button
+              type="button"
               testid="ascendingSort"
               className="ascOrder"
               onClick={this.onClickAscOrder}
@@ -335,6 +336,7 @@ class Home extends Component {
               <FcGenericSortingAsc className="order-icon" />
             </button>
             <button
+              type="button"
               testid="descendingSort"
               className="ascOrder"
               onClick={this.onClickDescOrder}
@@ -358,7 +360,13 @@ class Home extends Component {
             <p className="state-ut-heading">Population</p>
           </div>
         </div>
-        <div className></div>
+        <div className="states-data-container">
+          <ul className="states-list">
+            {statesInfo.map(eachState => (
+              <TotalStats key={eachState.stateCode} stateDetails={eachState} />
+            ))}
+          </ul>
+        </div>
       </div>
     )
   }

@@ -210,3 +210,12 @@
 .other-tables-bar {
   width: 15.6%;
 }
+
+.states-data-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.states-list {
+  padding: 0px;
+}

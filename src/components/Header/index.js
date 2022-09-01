@@ -109,6 +109,7 @@ class Header extends Component {
               <img
                 src="https://res.cloudinary.com/drytxchra/image/upload/v1661846326/add-to-queue_1_bayrd0.png"
                 className="popup-btn-image"
+                alt="button"
               />
             </button>
           </div>
