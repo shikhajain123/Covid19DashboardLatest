@@ -1,21 +1,22 @@
 import {Link} from 'react-router-dom'
 import './index.css'
 
-const TotalStats = props => {
-  const {key, stateDetails} = props
+const TotalStats = ({key, stateDetails}) => {
+  //   const  = props
   const {
     stateName,
     confirmed,
     deceased,
     recovered,
     population,
+    stateCode,
     other,
   } = stateDetails
 
   const active = confirmed - recovered - deceased - other
 
   return (
-    <Link to={`/state/${key}`}>
+    <Link to={`/state/${stateCode}`}>
       <li className="other-state-tables-bar">
         <div className="other-tables-bar">
           <p className="state-ut-heading">{stateName}</p>
