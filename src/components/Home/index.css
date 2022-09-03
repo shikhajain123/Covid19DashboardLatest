@@ -21,21 +21,28 @@
   }
 }
 
-.search-btn-container {
-  display: flex;
+.search-container {
   background: #2f2f43;
   border-radius: 8px;
-  align-items: center;
+  margin: 32px 0px;
+  display: flex;
+  flex-direction: row;
   justify-content: flex-start;
-  width: 90%;
-  height: 60px;
+  align-items: center;
+  width: 57.22%;
+  height: 72px;
 }
 
-@media screen and (min-width: 601px) {
-  .search-btn-container {
-    margin: 32px 0px;
-    width: 57.22%;
+@media screen and (max-width: 601px) {
+  .search-container {
+    width: 90%;
   }
+}
+
+.search-icon {
+  color: #94a3b8;
+  font-size: 24px;
+  margin: 0px 32px;
 }
 
 .search-input {

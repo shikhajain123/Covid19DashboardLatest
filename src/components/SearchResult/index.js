@@ -4,11 +4,11 @@ import './index.css'
 // import '../../fonts/HKGrotesk-Regular.otf'
 
 const SearchResult = props => {
-  const {statename, statecode, id} = props
+  const {statename, statecode, key} = props
 
   return (
     <li>
-      <Link to={`/state/${id}`} className="link-search">
+      <Link to={`/state/${statecode}`} className="link-search">
         <div className="search-result">
           <h1 className="search-result-heading font-face-gm">{statename}</h1>
 

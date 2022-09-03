@@ -1,107 +1,72 @@
-.navbar-container-mobile {
-  background-color: #1e1e30;
-  min-height: 40px;
-  display: flex;
-  justify-content: space-between;
+.header-container {
   width: 100%;
-  padding: 10px;
-}
-
-/*@media screen and (min-width: 768px) {
-  .navbar-container-mobile {
-    display: none;
-  }
-}
-*/
-
-.nav-container-desktop {
+  height: 80px;
   background-color: #1e1e30;
-  min-height: 25px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  width: 100%;
-  padding: 15px;
-}
-
-@media screen and (min-width: 768px) {
-  .nav-container-desktop {
-    padding-left: 85px;
-    padding-top: 15px;
-    padding-right: 95px;
-  }
-}
-
-.tab-container {
-  display: flex;
-  list-style-type: none;
+  align-items: center;
+  padding: 0px 150px;
 }
 
 .logo {
-  width: 130px;
-  height: 14px;
-  margin-top: 10px;
+  font-family: Bree Serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  color: #f8fafc;
+}
+.india {
+  color: #3b82f6;
 }
 
-.popup-btn-container {
-  display: block;
-}
-
-@media screen and (min-width: 768px) {
-  .popup-btn-container {
-    display: none;
-  }
-}
-
-.popup-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-}
-
-.popup-btn-image {
-  color: white;
-  width: 30px;
-}
-
-.popup-container {
+.navBar {
   display: flex;
-  justify-content: space-between;
-  margin: 10px;
-  height: 80vh;
-}
-
-.list-container {
-  list-style-type: none;
-  display: none;
-}
-
-@media screen and (min-width: 768px) {
-  .list-container {
-    display: flex;
-  }
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .item {
-  margin-right: 18px;
+  list-style: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #f8fafc;
+  margin: 0px 16px;
 }
 
-.home-btn-light {
-  background-color: transparent;
-  color: white;
-  font-size: 20px;
-  margin-left: 10px;
-  border: none;
-  cursor: pointer;
-  outline: none;
+.link {
+  text-decoration: none;
 }
 
-.home-btn-grey {
+.toggle-button {
   background-color: transparent;
-  color: #94a3b8;
-  font-size: 20px;
-  margin-left: 10px;
-  border: none;
-  cursor: pointer;
   outline: none;
+  border: none;
+}
+
+.mobile-header-container {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .mobile-header-container {
+    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 80px;
+    background-color: #1e1e30;
+    padding: 0px 10px;
+  }
+
+  .header-container {
+    display: none;
+  }
 }

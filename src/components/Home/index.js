@@ -289,7 +289,7 @@ class Home extends Component {
         </div>
         <div
           className="state-block-column-container"
-          testid="countryWideRecoveredCases"
+          testid="countryWideDeceasedCases"
         >
           <p className="stats-title gray">Deceased</p>
           <img
@@ -310,12 +310,13 @@ class Home extends Component {
 
   searchStarted = event => {
     const searchItem = event.target.value
-    const searchResult = statesList.filter(each =>
-      each.state_name.toLowerCase().includes(searchItem.toLowerCase()),
+    const searchResult = statesList.filter(data =>
+      data.state_name.toLowerCase().includes(searchItem.toLowerCase()),
     )
+
     return this.setState({
-      filteredSearchList: searchResult,
       searchInput: event.target.value,
+      filteredSearchList: searchResult,
     })
   }
 
@@ -425,25 +426,17 @@ class Home extends Component {
         <div className="home-container">
           <Header />
           <div className="responsive-container">
-            <div className="search-btn-container">
-              <button
-                testid="searchButton"
-                type="button"
-                className="search-button"
-                onClick={this.onSubmitSearchInput}
-              >
-                <BsSearch className="search-icon" testid="searchIcon" />
-              </button>
-
+            <div className="search-container">
+              <BsSearch testid="searchIcon" className="search-icon" />
               <input
-                className="search-input"
                 type="search"
                 placeholder="Enter the State"
+                className="search-bar"
                 onChange={this.searchStarted}
                 onAbort={this.removeFilteredList}
               />
             </div>
-            {searchInput.length > 0 ? showSearchList : ''}
+            {searchInput.length > 0 ? this.showSearchList() : ''}
             {isLoading ? (
               this.renderLoader()
             ) : (

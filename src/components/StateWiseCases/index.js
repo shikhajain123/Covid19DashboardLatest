@@ -1,11 +1,11 @@
-import './index.css'
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
+
 import Header from '../Header'
-import Footer from '../Footer'
-import ChartsData from '../ChartsData'
-import StateTotalData from '../StateTotalData'
+import './index.css'
 import ShowEachDistrictData from '../ShowEachDistrictData'
+import StateTotalData from '../StateTotalData'
+import ChartsData from '../ChartsData'
 
 const statesList = [
   {
@@ -184,24 +184,23 @@ class StateWiseCases extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok) {
       const data = await response.json()
-      const stateTestedData = data[stateCode].total.tested
-
+      const stateTastedData = data[stateCode].total.tested
       const stateObject = statesList.filter(
         each => each.state_code === stateCode,
       )
       const eachState = data[stateCode].total
-
       const stateName = stateObject[0].state_name
-      const dateData = new Date(data[stateCode].meta.last_updated)
+
+      const datedata = new Date(data[stateCode].meta.last_updated)
 
       this.setState({
         eachStateTotalData: eachState,
-        totalTestedData: stateTestedData,
+        totalTestedData: stateTastedData,
         nameOfState: stateName,
         isLoading: false,
         id: stateCode,
         dataarray: data,
-        date: dateData,
+        date: datedata,
         stateCode,
       })
     } else {
@@ -209,7 +208,11 @@ class StateWiseCases extends Component {
     }
   }
 
-  renderLoaderView = () => (
+  onGetCategory = categoryVal => {
+    this.setState({category: categoryVal, activeTab: false})
+  }
+
+  renderLoadingView = () => (
     <div
       className="products-details-loader-container"
       testid="stateDetailsLoader"
@@ -221,9 +224,9 @@ class StateWiseCases extends Component {
   getCategoryWiseData = () => {
     const {category, id, dataarray} = this.state
     const districtOutput = dataarray[id].districts
-
     const distNamesList = Object.keys(districtOutput)
     const categoryLower = category.toLowerCase()
+
     const categoryData = distNamesList.map(element => ({
       distName: element,
       value: districtOutput[element].total[categoryLower]
@@ -244,7 +247,6 @@ class StateWiseCases extends Component {
               districtOutput[element].total.deceased)
           : 0,
     }))
-
     activeCases.sort((a, b) => b.value - a.value)
 
     if (categoryLower === 'active') {
@@ -255,15 +257,14 @@ class StateWiseCases extends Component {
 
   renderStateView = () => {
     const {
-      eachStateTotalData,
       nameOfState,
-      date,
       totalTestedData,
-      stateCode,
+      eachStateTotalData,
       activeTab,
+      date,
       category,
+      stateCode,
     } = this.state
-
     const catdata = this.getCategoryWiseData()
 
     return (
@@ -319,14 +320,12 @@ class StateWiseCases extends Component {
   render() {
     const {isLoading} = this.state
     const renderData = isLoading
-      ? this.renderLoaderView()
+      ? this.renderLoadingView()
       : this.renderStateView()
-
     return (
       <div className="main-container">
         <Header />
         <div className="container">{renderData}</div>
-        <Footer />
       </div>
     )
   }

@@ -4,62 +4,35 @@
   align-items: center;
 }
 
-.footer-heading {
-  font-family: 'Bree Serif';
+.logo {
+  font-family: Bree Serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 20px;
-  line-height: 32px;
-  /* identical to box height, or 133% */
-
-  /* Light / blue-gray / 50 */
-  margin-bottom: 0px;
+  line-height: 24px;
   color: #f8fafc;
+  text-align: center;
 }
-
-@media screen and (min-width: 768px) {
-  .footer-heading {
-    font-size: 24px;
-  }
-}
-.footer-span {
+.india {
   color: #3b82f6;
 }
 
-.footer-para {
-  font-family: 'Roboto';
+.tagline {
+  font-family: Roboto;
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: normal;
+  font-size: 16px;
   line-height: 24px;
+  text-align: center;
   color: #94a3b8;
 }
 
-@media screen and (min-width: 768px) {
-  .footer-para {
-    font-size: 16px;
-  }
-}
-
-.social-media-icons {
-  display: flex;
-  justify-content: space-around;
-}
-
-.icons {
-  font-family: 'Font Awesome 5 Brands';
+.icon {
   font-style: normal;
-  font-weight: 400;
-  font-size: 26.0279px;
-
+  font-weight: normal;
+  font-size: 52.9233px;
   line-height: 61px;
+  text-align: center;
   color: #cbd5e1;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-@media screen and (min-width: 768px) {
-  .icons {
-    font-size: 52.9233px;
-  }
+  margin: 0px 32px;
 }

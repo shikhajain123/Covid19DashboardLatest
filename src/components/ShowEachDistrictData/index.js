@@ -1,7 +1,14 @@
-import {Component} from 'react'
+import './index.css'
 
-export default class ShowEachDistrictData extends Component {
-  render() {
-    return <div>`arpit`</div>
-  }
+const ShowEachDistrictData = props => {
+  const {number, name} = props
+
+  return (
+    <li className="list-style">
+      <p className="district-numbers">{number}</p>
+      <p className="district-name">{name}</p>
+    </li>
+  )
 }
+
+export default ShowEachDistrictData
